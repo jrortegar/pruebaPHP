@@ -19,12 +19,25 @@
                 }
             });
         }
+
+        function contarUsuarios() {
+            $.ajax({
+                url: '../mvc/Controlador/controlContador.php',
+                type: 'get',
+                success: function(response) {
+                    var x = JSON.parse(response);
+                    console.log(x,x["cuenta"]);
+                    $("#respuesta").html(x["cuenta"]);
+                }
+            });
+        }
+
     </script>
 
 </head>
 
 
-<input type="button" href="javascript:;" onclick="realizaProceso();return false;" value="Traer" />
+
 
 <br />
 
@@ -32,10 +45,17 @@
 -->
 
 <body>
+<input type="button" href="javascript:;" onclick="realizaProceso();return false;" value="Traer" />
     <div>
         <table id="resultado" border="1">
         </table>
     </div>
+
+    <input type="button" href="javascript:;" onclick="contarUsuarios();return false;" value="Traer" />
+    <div>
+        <span id="respuesta"></span>
+    </div>
+
 
 </body>
 

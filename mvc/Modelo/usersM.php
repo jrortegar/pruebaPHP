@@ -11,4 +11,12 @@ class UsersM
         return $pdo->fetchAll();
         $pdo->close();
     }
+
+    static public function contarUsersM($tablaBD)
+    {
+        $pdo = ConexionBD::cBD()->prepare("SELECT count(*) as cuenta FROM $tablaBD");
+        $pdo->execute();
+        return $pdo->fetchAll();
+        $pdo->close();
+    }
 }
