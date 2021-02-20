@@ -1,9 +1,42 @@
-<?php
+<html>
 
-require_once "Controlador/rutasC.php";
-require_once "Controlador/usersC.php";
-require_once "Modelo/rutasM.php";
-require_once "Modelo/usersM.php";
+<head>
 
-$rutas = new RutasControlador();
-$rutas -> plantilla();
+    <title>PRUEBA</title>
+
+    <script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+
+    <script>
+        function realizaProceso() {
+            $.ajax({
+                url: '../mvc/Controlador/control.php',
+                type: 'get',
+                beforeSend: function() {
+                    $("#resultado").html("Procesando, espere por favor...");
+                },
+                success: function(response) {
+                    $("#resultado").html(response);
+                }
+            });
+        }
+    </script>
+
+</head>
+
+
+<input type="button" href="javascript:;" onclick="realizaProceso();return false;" value="Traer" />
+
+<br />
+
+<!--Resultado: <br><span id="resultado">0</span>
+-->
+
+<body>
+    <div>
+        <table id="resultado" border="1">
+        </table>
+    </div>
+
+</body>
+
+</html>
